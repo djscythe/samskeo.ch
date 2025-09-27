@@ -1,0 +1,6 @@
+{{ .taxonomy | markdownify }}:&#32;
+<ul class="nav-list">
+  {{ range .page.GetTerms .taxonomy }}
+    <li><a href="{{ .RelPermalink }}">{{ .LinkTitle | markdownify }}</a></li>
+  {{ end }}
+</ul>

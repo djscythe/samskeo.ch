@@ -1,0 +1,43 @@
+baseURL = "https://samskeo.ch/"
+capitalizeListTitles = false
+disableHugoGeneratorInject = true
+languageCode = "en-GB-oxendict"
+pluralizeListTitles = false
+title = "djscythe's website"
+uglyURLs = true
+
+[build]
+noJSConfigInAssets = true
+
+[markup.goldmark.extensions.passthrough]
+enable = true
+
+[markup.goldmark.extensions.passthrough.delimiters]
+block = [['\[', '\]']]
+inline = [['\(', '\)']]
+
+[markup.goldmark.parser.attribute]
+block = true
+
+[params]
+displayTitle = "sam skeoch"
+
+[[params.contact]]
+link = "https://codeberg.org/djscythe"
+name = "djscythe"
+site = "Codeberg"
+
+[[params.contact]]
+link = "mailto:me@samskeo.ch"
+name = "me@samskeo.ch"
+site = "email"
+
+[[params.contact]]
+link = "https://pawb.fun/@djscythe"
+name = "@djscythe@pawb.fun"
+site = "Fediverse"
+
+[[params.contact]]
+link = "https://github.com/djscythe"
+name = "djscythe"
+site = "Github"

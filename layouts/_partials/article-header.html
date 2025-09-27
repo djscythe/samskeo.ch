@@ -1,0 +1,15 @@
+{{ .tag | printf "<%s>" | safeHTML }}
+{{ if .link }}
+  <a href="{{ .page.RelPermalink }}">
+{{ end }}
+{{ .page.LinkTitle | markdownify }}
+{{ if .link }}
+  </a>
+{{ end }}
+{{ .tag | printf "</%s>" | safeHTML }}
+{{ with page.Date | time.Format "2006-01-02" }}
+  <time datetime="{{ . }}">{{ . }}</time>
+{{ end }}
+{{ with .page.ReadingTime }}
+  <time datetime="PT{{ . }}M">{{ . }} minute read</time>
+{{ end }}

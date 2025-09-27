@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="{{ site.Language.LanguageCode }}">
+  <head>
+    {{ partial "head.html" . }}
+    {{ block "head-supplement" . }}{{ end }}
+  </head>
+  <body>
+    <header id="page-header">
+      {{ partial "page-header.html" . }}
+    </header>
+    <main>
+      {{ block "title" . }}
+        <h1>
+          {{ .Params.displayTitle | default .Title | markdownify }}
+        </h1>
+      {{ end }}
+      {{ block "main" . }}{{ end }}
+    </main>
+    <footer id="page-footer">{{ partial "page-footer.html" . }}</footer>
+  </body>
+</html>

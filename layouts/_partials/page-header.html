@@ -1,0 +1,96 @@
+{{ with site }}
+  {{ ("images/logo.svg" | resources.Get | minify).Publish }}
+  {{ ("images/logo-cat.svg" | resources.Get | minify).Publish }}
+  <a href="{{ .Home.RelPermalink }}"
+    ><img id="logo" src="/images/logo" alt="go home" height="40" width="40"
+  /></a>
+  <a href="{{ .Home.RelPermalink }}"
+    >{{ .Params.displayTitle | default .Title | markdownify }}</a
+  >
+{{ end }}
+<fieldset id="theme-selector">
+  <legend>select page theme:</legend>
+  <input id="dark-radio" name="theme-selector" type="radio" value="dark" />
+  <label id="dark-label" for="dark-radio"
+    ><svg
+      xmlns="http://www.w3.org/2000/svg"
+      aria-label="set theme to dark"
+      height="32"
+      id="moon"
+      width="32"
+    >
+      <mask fill="white" id="moon-mask">
+        <path
+          d="M12.9998 0.000203133C13.4724 0.000203133 13.9392 0.0254438 14.3987 0.0746427C16.0859 0.255273 16.2133 2.45295 14.9902 3.62909C12.5306 5.99428 10.9998 9.31845 10.9998 13.0002C10.9999 16.6819 12.5307 20.0056 14.9903 22.3705C16.2134 23.5466 16.0863 25.7446 14.3991 25.9256C13.9395 25.9749 13.4726 26.0002 12.9998 26.0002C5.82027 26.0001 -5.90693e-05 20.1798 -0.000160217 13.0002C-0.000160217 5.82055 5.82021 0.000291399 12.9998 0.000203133Z"
+        />
+      </mask>
+      <path
+        d="M12.9998 0.000203133V-1.9998H12.9998L12.9998 0.000203133ZM10.9998 13.0002H8.99984V13.0002L10.9998 13.0002ZM12.9998 26.0002L12.9998 28.0002H12.9998V26.0002ZM-0.000160217 13.0002H-2.00016V13.0002L-0.000160217 13.0002ZM14.3991 25.9256L14.1858 23.937L14.3991 25.9256ZM12.9998 0.000203133V2.0002C13.4012 2.0002 13.7968 2.02164 14.1858 2.06328L14.3987 0.0746427L14.6116 -1.91399C14.0815 -1.97075 13.5437 -1.9998 12.9998 -1.9998V0.000203133ZM14.9902 3.62909L13.6039 2.18748C10.7685 4.91406 8.99984 8.75223 8.99984 13.0002H10.9998H12.9998C12.9998 9.88467 14.2926 7.07451 16.3764 5.07071L14.9902 3.62909ZM10.9998 13.0002L8.99984 13.0002C8.9999 17.2482 10.7687 21.0859 13.6041 23.8122L14.9903 22.3705L16.3765 20.9288C14.2927 18.9253 12.9999 16.1155 12.9998 13.0002L10.9998 13.0002ZM14.3991 25.9256L14.1858 23.937C13.7968 23.9787 13.4012 24.0002 12.9998 24.0002V26.0002V28.0002C13.544 28.0002 14.0821 27.9711 14.6124 27.9142L14.3991 25.9256ZM12.9998 26.0002L12.9999 24.0002C6.92485 24.0001 1.99993 19.0752 1.99984 13.0002L-0.000160217 13.0002L-2.00016 13.0002C-2.00004 21.2843 4.7157 28.0001 12.9998 28.0002L12.9998 26.0002ZM-0.000160217 13.0002H1.99984C1.99984 6.92515 6.92476 2.00028 12.9999 2.0002L12.9998 0.000203133L12.9998 -1.9998C4.71566 -1.9997 -2.00016 4.71596 -2.00016 13.0002H-0.000160217ZM14.9903 22.3705L13.6041 23.8122C13.6741 23.8795 13.732 23.9694 13.7678 24.0696C13.805 24.1738 13.8045 24.2495 13.8015 24.2734C13.7986 24.2968 13.8033 24.2138 13.9039 24.1045C13.9544 24.0496 14.0154 24.0043 14.0785 23.9734C14.1407 23.9429 14.1823 23.9374 14.1858 23.937L14.3991 25.9256L14.6124 27.9142C15.4855 27.8205 16.2674 27.4429 16.8466 26.8138C17.4074 26.2047 17.6838 25.4648 17.7707 24.769C17.9396 23.4158 17.4369 21.9484 16.3765 20.9288L14.9903 22.3705ZM14.3987 0.0746427L14.1858 2.06328C14.1823 2.0629 14.1407 2.05739 14.0785 2.02689C14.0155 1.99599 13.9544 1.95072 13.9038 1.8958C13.8031 1.78648 13.7983 1.70333 13.8012 1.72656C13.8042 1.75039 13.8048 1.82592 13.7676 1.9301C13.7318 2.03025 13.674 2.1201 13.6039 2.18748L14.9902 3.62909L16.3764 5.07071C17.4368 4.0511 17.9395 2.58383 17.7704 1.23054C17.6834 0.534758 17.4069 -0.20519 16.846 -0.814129C16.2666 -1.44316 15.4846 -1.82053 14.6116 -1.91399L14.3987 0.0746427Z"
+        fill="black"
+        id="moon-path"
+        mask="url(#moon-mask)"
+        transform="translate(6 3) rotate(-30 13 13)"
+      />
+    </svg>
+  </label>
+  <input id="light-radio" name="theme-selector" type="radio" value="light" />
+  <label id="light-label" for="light-radio"
+    ><svg
+      xmlns="http://www.w3.org/2000/svg"
+      aria-label="set theme to light"
+      height="32"
+      id="sun"
+      width="32"
+    >
+      <defs>
+        <path
+          d="M16 2V6"
+          id="sun-ray"
+          stroke-linecap="round"
+          stroke-width="2"
+        />
+      </defs>
+      <circle
+        cx="16"
+        cy="16"
+        fill="none"
+        r="6"
+        stroke="black"
+        stroke-width="2"
+      />
+      <g transform="rotate(0 16 16)">
+        <use class="sun-ray" href="#sun-ray" stroke="black" />
+      </g>
+      <g transform="rotate(45 16 16)">
+        <use class="sun-ray" href="#sun-ray" stroke="black" />
+      </g>
+      <g transform="rotate(90 16 16)">
+        <use class="sun-ray" href="#sun-ray" stroke="black" />
+      </g>
+      <g transform="rotate(135 16 16)">
+        <use class="sun-ray" href="#sun-ray" stroke="black" />
+      </g>
+      <g transform="rotate(180 16 16)">
+        <use class="sun-ray" href="#sun-ray" stroke="black" />
+      </g>
+      <g transform="rotate(225 16 16)">
+        <use class="sun-ray" href="#sun-ray" stroke="black" />
+      </g>
+      <g transform="rotate(270 16 16)">
+        <use class="sun-ray" href="#sun-ray" stroke="black" />
+      </g>
+      <g transform="rotate(316 16 15)">
+        <use class="sun-ray" href="#sun-ray" stroke="black" />
+      </g>
+    </svg>
+  </label>
+</fieldset>
+<nav>
+  <ul class="nav-list">
+    {{- range .Site.Menus.header.ByName -}}
+      <li>
+        <a href="{{ .URL }}">{{ .Name | markdownify }}</a>
+      </li>
+    {{- end -}}
+  </ul>
+</nav>

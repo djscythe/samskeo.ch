@@ -1,0 +1,25 @@
+{{ define "sitemap" }}
+  {{ range .Pages }}
+    {{ if not .Sitemap.Disable }}
+      <li>
+        <a href="{{ .Permalink }}">{{ .LinkTitle | markdownify }}</a>
+        {{ if .Pages }}
+          <ul class="sitemap-list">
+            {{ template "sitemap" . }}
+          </ul>
+        {{ end }}
+      </li>
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{ define "main" }}
+  {{ .Content }}
+  <ul class="sitemap-list">
+    {{ with .Site.Home }}
+      <li>
+        <a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
+      </li>
+      {{ template "sitemap" . }}
+    {{ end }}
+  </ul>
+{{ end }}
