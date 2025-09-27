@@ -1,0 +1,7 @@
+{{ define "head-supplement" }}
+  <link rel="me" href="https://pawb.fun/@djscythe" />
+{{ end }}
+{{ define "main" }}
+  <h1>{{ .Params.displayTitle | default .Title | markdownify }}</h1>
+  {{ .Content }}
+{{ end }}

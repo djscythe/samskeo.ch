@@ -1,0 +1,8 @@
+{
+  "extends": "@tsconfig/strictest",
+  "compilerOptions": {
+    "target": "esnext",
+    "moduleResolution": "bundler"
+  },
+  "exclude": ["eslint.config.js", "public/", "stylelint.config.js"]
+}

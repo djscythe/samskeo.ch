@@ -1,0 +1,14 @@
+{{ define "main" }}
+  <h1>{{ .Params.displayTitle | default .Title | markdownify }}</h1>
+  {{ .Content }}
+  {{ range .Pages.GroupByDate "2006" }}
+    <h2>{{ .Key }}</h2>
+    <ul class="blog-list">
+      {{ range .Pages }}
+        <li>
+          {{ partial "summary.html" (dict "link" true "page" . "tag" "h3") }}
+        </li>
+      {{ end }}
+    </ul>
+  {{ end }}
+{{ end }}

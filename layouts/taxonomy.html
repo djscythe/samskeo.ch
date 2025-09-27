@@ -1,0 +1,12 @@
+{{ define "main" }}
+  <h1>{{ .Params.displayTitle | default .Title | markdownify }}</h1>
+  {{ .Content }}
+  <ul>
+    {{ range .Data.Terms.ByCount }}
+      <li>
+        <a href="{{ .Page.RelPermalink }}">{{ .Page.LinkTitle }}</a>
+        ({{ .Count }})
+      </li>
+    {{ end }}
+  </ul>
+{{ end }}

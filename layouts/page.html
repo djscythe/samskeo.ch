@@ -1,0 +1,4 @@
+{{ define "main" }}
+  <h1>{{ .Params.displayTitle | default .Title | markdownify }}</h1>
+  {{ .Content }}
+{{ end }}
