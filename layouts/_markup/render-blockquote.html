@@ -1,0 +1,16 @@
+<figure>
+  <blockquote{{ with .Attributes.cite }} cite="{{ . }}"{{ end }}>
+    {{ .Text }}
+  </blockquote>
+  {{ with .Attributes.caption }}
+    <figcaption>
+      {{ with $.Attributes.cite }}
+      <a href="{{ . }}">
+      {{ end }}
+        {{ . | markdownify }}
+      {{ with $.Attributes.cite }}
+      </a>
+      {{ end }}
+    </figcaption>
+  {{ end }}
+</figure>

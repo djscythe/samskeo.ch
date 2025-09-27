@@ -1,0 +1,16 @@
+{{ define "title" }}
+  <h1>
+    tag:
+    {{ .Params.displayTitle | default .Title | markdownify }}
+  </h1>
+{{ end }}
+{{ define "main" }}
+  {{ .Content }}
+  <ul class="blog-list">
+    {{ range .Pages }}
+      <li>
+        {{ partial "summary.html" (dict "link" true "page" . "tag" "h2") }}
+      </li>
+    {{ end }}
+  </ul>
+{{ end }}

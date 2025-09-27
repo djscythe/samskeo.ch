@@ -1,0 +1,20 @@
+<article>
+  <header>
+    <a href="{{ .RelPermalink }}"
+      >{{ with .Resources.Get "images/cover.png" }}
+        <img
+          src="{{ .RelPermalink }}"
+          height="{{ .Height }}"
+          width="{{ .Width }}"
+          class="cover-image"
+        />
+      {{ end }}</a
+    >
+    <h2>
+      <a href="{{ .RelPermalink }}">{{ .LinkTitle | markdownify }}</a>
+    </h2>
+  </header>
+  <footer class="article-footer">
+    {{ partial "article-footer.html" (dict "page" . "taxonomy" "categories" ) }}
+  </footer>
+</article>

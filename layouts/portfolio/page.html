@@ -1,0 +1,20 @@
+{{ define "title" }}{{ "" }}{{ end }}
+{{ define "main" }}
+  <article>
+    <header>
+      <h1>
+        {{ .Params.displayTitle | default .Title | markdownify }}
+      </h1>
+      <img
+        src="{{ (.Resources.Get "images/cover.png").RelPermalink }}"
+        class="cover-image"
+      />
+    </header>
+    <section>
+      {{ .Content }}
+    </section>
+    <footer class="article-footer">
+      {{ partial "article-footer.html" (dict "page" . "taxonomy" "categories" ) }}
+    </footer>
+  </article>
+{{ end }}

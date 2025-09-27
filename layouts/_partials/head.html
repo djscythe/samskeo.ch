@@ -1,0 +1,57 @@
+<link href="/favicon.ico" rel="icon" sizes="32x32" type="image/x-icon" />
+<link
+  rel="icon"
+  href="{{ ("images/logo.svg" | resources.Get | minify).RelPermalink }}"
+  type="image/svg+xml"
+/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" type="image/png" />
+{{ with "styles/print.scss"
+  | resources.Get
+  | toCSS (dict "transpiler" "dartsass")
+  | minify
+  | fingerprint
+}}
+  <link
+    href="{{ .RelPermalink }}"
+    rel="stylesheet"
+    media="print"
+    integrity="{{ .Data.Integrity }}"
+    crossorigin="anonymous"
+  />
+{{ end }}
+{{ with  "styles/screen.scss"
+  | resources.Get
+  | toCSS (dict "transpiler" "dartsass")
+  | minify
+  | fingerprint
+}}
+  <link
+    href="{{ .RelPermalink }}"
+    rel="stylesheet"
+    media="screen"
+    integrity="{{ .Data.Integrity }}"
+    crossorigin="anonymous"
+  />
+{{ end }}
+<meta charset="UTF-8" />
+{{ range where .Site.Data.contact "site" "Fediverse" }}
+  <meta name="fediverse:creator" content="{{ .name }}" />
+{{ end }}
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+{{ with "scripts/index.ts"
+  | resources.Get
+  | js.Build (dict "minify" true)
+  | fingerprint
+}}
+  <script
+    src="{{ .RelPermalink }}"
+    integrity="{{ .Data.Integrity }}"
+    crossorigin="anonymous"
+    defer
+  ></script>
+{{ end }}
+<title>
+  {{- with .Title | markdownify | plainify -}}
+    {{ cond (strings.Contains . "djscythe") . (printf "%s | djscythe" .) }}
+  {{- end -}}
+</title>

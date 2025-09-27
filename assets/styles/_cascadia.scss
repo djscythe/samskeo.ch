@@ -1,0 +1,41 @@
+@font-face {
+  font-family: CascadiaCode;
+  font-style: normal;
+  font-weight: 400;
+  src:
+    local("Cascadia Code SemiLight"), local("CascadiaCode-SemiLight"),
+    url("/fonts/cascadia/CascadiaCode-SemiLight.woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: CascadiaCode;
+  font-style: italic;
+  font-weight: 400;
+  src:
+    local("Cascadia Code SemiLight Italic"),
+    local("CascadiaCode-SemiLightItalic"),
+    url("/fonts/cascadia/CascadiaCode-SemiLightItalic.woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: CascadiaCode;
+  font-style: normal;
+  font-weight: 700;
+  src:
+    local("Cascadia Code SemiBold"), local("CascadiaCode-SemiBold"),
+    url("/fonts/cascadia/CascadiaCode-SemiBold.woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: CascadiaCode;
+  font-style: italic;
+  font-weight: 700;
+  src:
+    local("Cascadia Code SemiBold Italic"),
+    local("CascadiaCode-SemiBoldItalic"),
+    url("/fonts/cascadia/CascadiaCode-SemiBoldItalic.woff2");
+  font-display: swap;
+}

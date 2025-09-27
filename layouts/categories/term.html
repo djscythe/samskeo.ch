@@ -1,0 +1,16 @@
+{{ define "title" }}
+  <h1>
+    category:
+    {{ .Params.displayTitle | default .Title | markdownify }}
+  </h1>
+{{ end }}
+{{ define "main" }}
+  {{ .Content }}
+  <ul class="portfolio-list">
+    {{ range .Pages }}
+      <li>
+        {{ partial "cover.html" . }}
+      </li>
+    {{ end }}
+  </ul>
+{{ end }}

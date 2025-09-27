@@ -1,0 +1,14 @@
+{{ define "title" }}{{ "" }}{{ end }}
+{{ define "main" }}
+  <article>
+    <header class="blog-header">
+      {{ partial "article-header.html" (dict "page" . "tag" "h1") }}
+    </header>
+    <section>
+      {{ .Content }}
+    </section>
+    <footer class="article-footer">
+      {{ partial "article-footer.html" (dict "page" . "taxonomy" "tags" ) }}
+    </footer>
+  </article>
+{{ end }}

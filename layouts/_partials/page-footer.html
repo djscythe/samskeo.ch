@@ -1,0 +1,7 @@
+<ul class="nav-list">
+  {{- range .Site.Menus.footer.ByName -}}
+    <li>
+      <a href="{{ .URL }}">{{ .Name | markdownify }}</a>
+    </li>
+  {{- end -}}
+</ul>

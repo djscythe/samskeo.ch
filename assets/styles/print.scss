@@ -1,0 +1,48 @@
+@use "base";
+
+:root {
+  font-size: 10pt;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+main {
+  text-align: justify;
+}
+
+.article-footer {
+  display: none;
+}
+
+.footnote-backref {
+  display: none;
+}
+
+#page-footer {
+  display: none;
+}
+
+#page-header {
+  display: none;
+}
+
+@page {
+  margin: calc(297mm / 9) calc(210mm / 9 * 1.5) calc(297mm / 9 * 2);
+  size: a4 portrait;
+
+  @bottom-center {
+    content: counter(page);
+  }
+}
+
+// currently unsupported in WebKit
+// @page :left {
+//   margin-inline: calc(210mm / 9 * 2) calc(210mm / 9 * 1);
+// }
+
+// @page :right {
+//   margin-inline: calc(210mm / 9 * 1) calc(210mm / 9 * 2);
+// }

@@ -1,0 +1,11 @@
+<article>
+  <header class="blog-header">
+    {{ partial "article-header.html" . }}
+  </header>
+  {{- .page.Content | strings.Truncate 100
+    (printf " <a href=\"%s\">&hellip;</a>" .page.RelPermalink | safeHTML)
+  -}}
+  <footer class="article-footer">
+    {{ partial "article-footer.html" (dict "page" .page "taxonomy" "tags" ) }}
+  </footer>
+</article>

@@ -1,0 +1,3 @@
+<pre><samp {{ with .Attributes.class }}
+  class="{{ . }}"
+{{ end }}>{{ .Inner | htmlEscape | safeHTML }}</samp></pre>

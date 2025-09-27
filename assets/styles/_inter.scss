@@ -1,0 +1,68 @@
+$font-feature-settings: "dlig", "salt", "ss03";
+
+@font-face {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 400;
+  font-feature-settings: $font-feature-settings;
+  src:
+    local("Inter Regular"), local("Inter-Regular"),
+    url("/fonts/inter/Inter-Regular.woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Inter;
+  font-style: italic;
+  font-weight: 400;
+  font-feature-settings: $font-feature-settings;
+  src:
+    local("Inter Italic"), local("Inter-Italic"),
+    url("/fonts/inter/Inter-Italic.woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 700;
+  font-feature-settings: $font-feature-settings;
+  src:
+    local("Inter SemiBold"), local("Inter-SemiBold"),
+    url("/fonts/inter/Inter-SemiBold.woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Inter;
+  font-style: italic;
+  font-weight: 700;
+  font-feature-settings: $font-feature-settings;
+  src:
+    local("Inter SemiBold Italic"), local("Inter-SemiBoldItalic"),
+    url("/fonts/inter/Inter-SemiBoldItalic.woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: InterDisplay;
+  font-style: normal;
+  font-weight: 700;
+  font-feature-settings: $font-feature-settings;
+  src:
+    local("Inter Display SemiBold"), local("InterDisplay-SemiBold"),
+    url("/fonts/inter/InterDisplay-SemiBold.woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: InterDisplay;
+  font-style: italic;
+  font-weight: 700;
+  font-feature-settings: $font-feature-settings;
+  src:
+    local("Inter Display SemiBold Italic"),
+    local("InterDisplay-SemiBoldItalic"),
+    url("/fonts/inter/InterDisplay-SemiBoldItalic.woff2");
+  font-display: swap;
+}
