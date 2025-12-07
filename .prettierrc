@@ -9,6 +9,7 @@
   ],
   "plugins": ["@prettier/plugin-xml", "prettier-plugin-go-template"],
   "printWidth": 79,
+  "proseWrap": "always",
   "xmlSortAttributesByKey": true,
   "xmlWhitespaceSensitivity": "preserve"
 }

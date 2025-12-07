@@ -59,7 +59,7 @@ pub fn process(
 ```
 
 `AsRef` contains a so-called 'hidden' lifetime which isn't apparent to the
-caller,  leading to this (simplified for clarity, but still somewhat cryptic)
+caller, leading to this (simplified for clarity, but still somewhat cryptic)
 error:
 
 ```samp {class="error"}
@@ -102,9 +102,11 @@ my Codeberg. the repository has been stagnant for quite a while, but if you
 have any ideas for fixes, features, or improvements, issues and PRs are much
 appreciated.
 
-[^1]: Rust's official regex crate does have some syntax idiosyncrasies, but as
-far as i can tell this one is simple enough to also work in any
-PCRE2-compatible regex engine.
+[^1]:
+    Rust's official regex crate does have some syntax idiosyncrasies, but as
+    far as i can tell this one is simple enough to also work in any
+    PCRE2-compatible regex engine.
 
-[^2]: the getting of which requires an extra `stat` (or whatever it's named on
-Windows) call, which has the possibility of erroring.
+[^2]:
+    the getting of which requires an extra `stat` (or whatever it's named on
+    Windows) call, which has the possibility of erroring.

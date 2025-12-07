@@ -1,0 +1,3 @@
+{{- with .Title | markdownify | plainify -}}
+  {{ cond (strings.Contains . "djscythe") . (printf "%s | djscythe" .) }}
+{{- end -}}

@@ -5,7 +5,7 @@ menus = "header"
 title = "djscythe's blog"
 
 [cascade.params]
-url = ":year/:slug.html"
+url = "blog/:year/:slug.html"
 
 [cascade.target]
 kind = "page"

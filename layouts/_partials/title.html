@@ -1,0 +1,35 @@
+{{ if .OutputFormats.Get "rss" }}
+  <header class="main-header">
+{{ end }}
+<h1>{{ .Params.displayTitle | default .Title | markdownify }}</h1>
+{{ with .OutputFormats.Get "rss" }}
+  <a 
+    id="rss-link" 
+    href="{{ .Permalink | replaceRE `^https` "feed" | safeURL }}" 
+    title="open RSS feed"
+  ><svg
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      fill="none"
+      height="24"
+      viewBox="0 0 24 24"
+      width="24"
+    >
+      <circle cx="3" cy="21" fill="black" r="3" />
+      <path
+        id="inner-ray"
+        d="M 2 11 A 11 11 0 0 1 13 22"
+        stroke="black"
+        stroke-linecap="round"
+        stroke-width="4"
+      />
+      <path
+        id="outer-ray"
+        d="M 2 2 A 20 20 0 0 1 22 22"
+        stroke="black"
+        stroke-linecap="round"
+        stroke-width="4"
+      /></svg
+  ></a>
+</header>
+{{ end }}

@@ -4,15 +4,11 @@ $width-margin-max: 32px;
 $width-margin-min: 16px;
 
 @use "base";
+@use "motion";
 
 @mixin hide {
   position: absolute;
   clip-path: inset(50%);
-}
-
-@mixin unhide {
-  position: initial;
-  clip-path: initial;
 }
 
 :root {
@@ -20,30 +16,23 @@ $width-margin-min: 16px;
 
   --color-accent: oklch(65% 47.5% 255deg);
   --color-background: light-dark(white, #{$color-black});
-  --color-overlay: light-dark(oklch(60% 7.5% 255deg), oklch(55% 5% 255deg));
+  --color-subtext: light-dark(oklch(60% 7.5% 255deg), oklch(55% 5% 255deg));
+  --color-overlay: light-dark(oklch(85% 7.5% 255deg), oklch(45% 2.5% 255deg));
   --color-surface: light-dark(oklch(95% 5% 255deg), oklch(30% 2.5% 255deg));
   --color-text: light-dark(#{$color-black}, white);
 
   &:has(#dark-radio:checked),
-  &[data-theme="dark"] {
+  &[data-theme="dark"]:not(:has(#light-radio:checked)) {
     color-scheme: dark;
 
     #dark-label {
       @include hide;
     }
-
-    #light-label {
-      @include unhide;
-    }
   }
 
   &:has(#light-radio:checked),
-  &[data-theme="light"] {
+  &[data-theme="light"]:not(:has(#dark-radio:checked)) {
     color-scheme: light;
-
-    #dark-label {
-      @include unhide;
-    }
 
     #light-label {
       @include hide;
@@ -54,18 +43,22 @@ $width-margin-min: 16px;
 a {
   color: var(--color-accent);
   text-decoration: none;
+
+  &[href^="https://"]:not([href^="https://samskeo.ch"])::after
+  {
+    content: "\202f↗";
+  }
 }
 
 blockquote {
-  color: var(--color-overlay);
-  border-inline-start: 0.0938em solid var(--color-overlay);
+  color: var(--color-subtext);
+  border-inline-start: 0.0938em solid currentcolor;
 }
 
 body {
   display: flex;
   flex-direction: column;
   min-block-size: 100dvb;
-  margin-inline: auto;
   color: var(--color-text);
   background-color: var(--color-background);
 }
@@ -114,11 +107,11 @@ pre {
 
 .article-footer,
 .blog-header {
-  color: var(--color-overlay);
+  color: var(--color-subtext);
 }
 
 .article-footer {
-  color: var(--color-overlay);
+  color: var(--color-subtext);
 
   .nav-list li:not(:last-child)::after {
     content: ", ";
@@ -130,12 +123,17 @@ pre {
 }
 
 .error {
-  color: light-dark(oklch(65% 50% 15deg), oklch(75% 37.5% 15deg));
+  color: light-dark(oklch(65% 37.5% 15deg), oklch(75% 37.5% 15deg));
+}
+
+.main-header {
+  display: flex;
+  gap: 1em;
+  align-items: baseline;
 }
 
 .sun-ray {
-  stroke: var(--color-overlay);
-  transform-origin: center;
+  stroke: var(--color-subtext);
 }
 
 #logo {
@@ -147,7 +145,7 @@ pre {
 }
 
 #moon-path {
-  fill: var(--color-overlay);
+  fill: var(--color-subtext);
 }
 
 #page-footer {
@@ -191,12 +189,26 @@ pre {
   }
 }
 
+#rss-link {
+  circle {
+    fill: var(--color-subtext);
+  }
+
+  path {
+    stroke: var(--color-subtext);
+  }
+
+  svg {
+    display: block;
+  }
+}
+
 #sun {
   cursor: pointer;
   fill: none;
 
   circle {
-    stroke: var(--color-overlay);
+    stroke: var(--color-subtext);
   }
 }
 
@@ -239,104 +251,17 @@ pre {
 }
 
 @media (prefers-color-scheme: dark) {
-  #dark-label {
+  :root:not([data-theme], :has(#light-radio:checked)) #dark-label {
     @include hide;
   }
 }
 
 @media (prefers-color-scheme: light) {
-  #light-label {
+  :root:not([data-theme], :has(#dark-radio:checked)) #light-label {
     @include hide;
   }
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  blockquote {
-    transition-timing-function: ease;
-    transition-duration: 0.5s;
-    transition-property: border-inline-start-color, color;
-  }
-
-  body,
-  #page-footer {
-    transition-timing-function: ease;
-    transition-duration: 0.5s;
-    transition-property: background-color, color;
-  }
-
-  code,
-  pre {
-    transition: background-color 0.5s ease;
-  }
-
-  .article-footer,
-  .error,
-  #page-footer a {
-    transition: color 0.5s ease;
-  }
-
-  @media (hover: hover) {
-    a {
-      text-decoration-line: underline;
-      text-decoration-color: transparent;
-      transition: text-decoration-color 0.1875s ease;
-
-      code {
-        transition:
-          background-color 0.5s ease,
-          text-decoration-color 0.1875s ease;
-      }
-
-      &:hover {
-        text-decoration-color: currentcolor;
-      }
-
-      .cover-image {
-        transition: border-radius 0.25s ease;
-
-        &:hover {
-          border-radius: 1.25rem;
-        }
-      }
-    }
-
-    .sun-ray {
-      transition: transform 0.25s ease;
-    }
-
-    #logo {
-      transition: border-radius 0.25s ease;
-
-      &:hover {
-        border-radius: 50%;
-      }
-    }
-
-    #moon {
-      transform-origin: 19px 16px;
-      transition: transform 0.25s ease;
-    }
-
-    #page-footer a {
-      transition:
-        color 0.5s ease,
-        text-decoration-color 0.1875s ease;
-    }
-
-    #sun {
-      overflow: visible;
-    }
-
-    #theme-selector {
-      &:hover {
-        #moon {
-          transform: rotate(15deg);
-        }
-
-        .sun-ray {
-          transform: translateY(-2px);
-        }
-      }
-    }
-  }
+  @include motion.motion;
 }

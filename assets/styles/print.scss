@@ -13,20 +13,17 @@ main {
   text-align: justify;
 }
 
-.article-footer {
+.article-footer,
+.copy-button,
+.footnote-backref,
+#page-footer,
+#page-header,
+#rss-link {
   display: none;
 }
 
-.footnote-backref {
-  display: none;
-}
-
-#page-footer {
-  display: none;
-}
-
-#page-header {
-  display: none;
+.main-header {
+  display: contents;
 }
 
 @page {

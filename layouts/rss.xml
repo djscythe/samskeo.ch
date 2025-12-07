@@ -1,0 +1,33 @@
+{{ printf "<?xml version=\"1.0\" standalone=\"yes\" ?>" | safeHTML }}
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+  <channel>
+    <description>{{ .Summary | printf "<![CDATA[%s]]>" | safeHTML }}</description>
+    <link>{{ .Permalink }}</link>
+    <title>{{ partial "named-title.html" . }}</title>
+    <image>
+      <link>{{ site.BaseURL }}</link>
+      <title>{{ site.Title | markdownify | plainify }}</title>
+      <url>{{ (resources.Get "images/logo.png").Permalink }}</url>
+      <height>32</height>
+      <width>32</width>
+    </image>
+    <language>{{ site.Language.LanguageCode }}</language>
+    <lastBuildDate>{{ (index .RegularPages.ByLastmod.Reverse 0).Lastmod.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</lastBuildDate>
+    {{ with site.Params.author }}<managingEditor>{{ .email }} ({{ .name }})</managingEditor>{{ end }}
+    {{ with site.Params.author }}<webMaster>{{ .email }} ({{ .name }})</webMaster>{{ end }}
+    {{ with .OutputFormats.Get "RSS" }}
+      {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
+    {{ end }}
+    {{ range .RegularPages }}
+      <item>
+        <description>{{ .Summary | printf "<![CDATA[%s]]>" | safeHTML }}</description>
+        <guid>{{ .Permalink }}</guid>
+        <link>{{ .Permalink }}</link>
+        <pubDate>{{ .PublishDate.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</pubDate>
+        <title>{{ .Title | markdownify | plainify }}</title>
+        <content:encoded>{{ .Content | printf "<![CDATA[%s]]>" | safeHTML }}</content:encoded>
+        <dc:creator>{{ site.Params.author.name }}</dc:creator>
+      </item>
+    {{ end }}
+  </channel>
+</rss>

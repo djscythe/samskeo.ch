@@ -16,8 +16,32 @@ enable = true
 block = [['\[', '\]']]
 inline = [['\(', '\)']]
 
+[markup.goldmark.extensions.typographer]
+apostrophe = "’"
+ellipsis = "…"
+emDash = "—"
+enDash = "–"
+leftAngleQuote = "«"
+leftDoubleQuote = "“"
+leftSingleQuote = "‘"
+rightAngleQuote = "»"
+rightDoubleQuote = "”"
+rightSingleQuote = "’"
+
 [markup.goldmark.parser.attribute]
 block = true
 
+[minify]
+minifyOutput = true
+
+[outputs]
+home = ["html"]
+taxonomy = ["html"]
+term = ["html"]
+
 [params]
 displayTitle = "sam skeoch"
+
+[params.author]
+email = "me@samskeo.ch"
+name = "sam skeoch"

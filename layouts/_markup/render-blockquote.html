@@ -5,11 +5,11 @@
   {{ with .Attributes.caption }}
     <figcaption>
       {{ with $.Attributes.cite }}
-      <a href="{{ . }}">
+        <a href="{{ . }}">
       {{ end }}
-        {{ . | markdownify }}
-      {{ with $.Attributes.cite }}
-      </a>
+      {{ . | markdownify }}
+      {{ if $.Attributes.cite }}
+        </a>
       {{ end }}
     </figcaption>
   {{ end }}

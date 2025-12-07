@@ -4,7 +4,7 @@
   href="{{ ("images/logo.svg" | resources.Get | minify).RelPermalink }}"
   type="image/svg+xml"
 />
-<link rel="apple-touch-icon" href="/apple-touch-icon.png" type="image/png" />
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" type="image/png" />
 {{ with "styles/print.scss"
   | resources.Get
   | toCSS (dict "transpiler" "dartsass")
@@ -33,6 +33,14 @@
     crossorigin="anonymous"
   />
 {{ end }}
+{{ with .OutputFormats.Get "rss" }}
+  <link
+    href="{{ .RelPermalink }}"
+    rel="{{ .Rel }}"
+    type="{{ .MediaType.Type }}"
+    title="{{ partial "named-title.html" $ }}"
+  />
+{{ end }}
 <meta charset="UTF-8" />
 {{ range where .Site.Data.contact "site" "Fediverse" }}
   <meta name="fediverse:creator" content="{{ .name }}" />
@@ -50,8 +58,4 @@
     defer
   ></script>
 {{ end }}
-<title>
-  {{- with .Title | markdownify | plainify -}}
-    {{ cond (strings.Contains . "djscythe") . (printf "%s | djscythe" .) }}
-  {{- end -}}
-</title>
+<title>{{ partial "named-title.html" . }}</title>

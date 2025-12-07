@@ -10,9 +10,7 @@
     </header>
     <main>
       {{ block "title" . }}
-        <h1>
-          {{ .Params.displayTitle | default .Title | markdownify }}
-        </h1>
+        {{ partial "title.html" . }}
       {{ end }}
       {{ block "main" . }}{{ end }}
     </main>
