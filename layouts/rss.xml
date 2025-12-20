@@ -5,9 +5,9 @@
     <link>{{ .Permalink }}</link>
     <title>{{ partial "named-title.html" . }}</title>
     <image>
-      <link>{{ site.BaseURL }}</link>
+      <link>{{ site.Home.Permalink }}</link>
       <title>{{ site.Title | markdownify | plainify }}</title>
-      <url>{{ (resources.Get "images/logo.png").Permalink }}</url>
+      <url>{{ absURL "/images/logo.png" }}</url>
       <height>32</height>
       <width>32</width>
     </image>

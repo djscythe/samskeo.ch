@@ -1,0 +1,8 @@
+<address>
+  <dl>
+    {{ range .Site.Data.contact }}
+      <dt>{{ .site }}</dt>
+      <dd><a href="{{ .link }}">{{ .name }}</a></dd>
+    {{ end }}
+  </dl>
+</address>

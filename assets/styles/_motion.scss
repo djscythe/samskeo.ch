@@ -60,6 +60,11 @@
       transition: translate 0.25s;
     }
 
+    #inner-ray,
+    #outer-ray {
+      transition: translate 0.25s;
+    }
+
     #logo {
       transition: border-radius 0.25s;
 
@@ -80,21 +85,17 @@
     }
 
     #rss-link {
-      path {
-        transition: translate 0.25s;
-      }
-
       svg {
         overflow: visible;
       }
 
       &:hover {
         #inner-ray {
-          translate: 1px -1px;
+          translate: 1.25px -1.25px;
         }
 
         #outer-ray {
-          translate: 2px -2px;
+          translate: 2.5px -2.5px;
         }
       }
     }

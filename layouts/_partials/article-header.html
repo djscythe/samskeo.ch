@@ -7,7 +7,7 @@
   {{ .page.Params.displayTitle | default .page.Title | markdownify }}
 {{ end }}
 {{ .tag | printf "</%s>" | safeHTML }}
-{{ with page.Date | time.Format "2006-01-02" }}
+{{ with page.PublishDate.Format "2006-01-02" }}
   <time>{{ . }}</time>
 {{ end }}
 {{ with .page.ReadingTime }}

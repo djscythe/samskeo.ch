@@ -1,7 +1,7 @@
 <link href="/favicon.ico" rel="icon" sizes="32x32" type="image/x-icon" />
 <link
-  rel="icon"
   href="{{ ("images/logo.svg" | resources.Get | minify).RelPermalink }}"
+  rel="icon"
   type="image/svg+xml"
 />
 <link href="/apple-touch-icon.png" rel="apple-touch-icon" type="image/png" />
@@ -41,11 +41,17 @@
     title="{{ partial "named-title.html" $ }}"
   />
 {{ end }}
+{{ if .IsHome }}
+  {{ range where .Site.Data.contact "site" "Fediverse" }}
+    <link href="{{ .link }}" rel="me" />
+  {{ end }}
+{{ end }}
 <meta charset="UTF-8" />
 {{ range where .Site.Data.contact "site" "Fediverse" }}
   <meta name="fediverse:creator" content="{{ .name }}" />
 {{ end }}
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+{{ partial "opengraph.html" . }}
 {{ with "scripts/index.ts"
   | resources.Get
   | js.Build (dict "minify" true)

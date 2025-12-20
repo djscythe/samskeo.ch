@@ -3,10 +3,11 @@
     <a href="{{ .RelPermalink }}"
       >{{ with .Resources.Get "images/cover.png" }}
         <img
-          src="{{ .RelPermalink }}"
-          height="{{ .Height }}"
-          width="{{ .Width }}"
           class="cover-image"
+          src="{{ .RelPermalink }}"
+          alt="{{ $.Params.coverAlt }}"
+          height="195"
+          width="312"
         />
       {{ end }}</a
     >
