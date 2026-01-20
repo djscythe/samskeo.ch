@@ -1,6 +1,11 @@
 <!doctype html>
-<html lang="{{ site.Language.LanguageCode }}">
-  <head>
+<html>
+  <head
+    prefix="{{ printf "%s%s" "og: https://ogp.me/ns#"
+      (cond .IsPage " https://ogp.me/ns/article#"
+      (cond .IsHome " http://ogp.me/ns/profile#" ""))
+    }}"
+  >
     {{ partial "head.html" . }}
   </head>
   <body>

@@ -1,4 +1,4 @@
-{{ .tag | printf "<%s>" | safeHTML }}
+{{ .level | printf "<h%d>" | safeHTML }}
 {{ if .link }}
   <a href="{{ .page.RelPermalink }}">
     {{ .page.LinkTitle | markdownify }}
@@ -6,7 +6,7 @@
 {{ else }}
   {{ .page.Params.displayTitle | default .page.Title | markdownify }}
 {{ end }}
-{{ .tag | printf "</%s>" | safeHTML }}
+{{ .level | printf "</h%d>" | safeHTML }}
 {{ with page.PublishDate.Format "2006-01-02" }}
   <time>{{ . }}</time>
 {{ end }}

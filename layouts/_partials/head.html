@@ -52,7 +52,10 @@
 {{ end }}
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 {{ partial "opengraph.html" . }}
-{{ with "scripts/index.ts"
+{{ with (cond
+  (.Store.Get "hasCopy")
+  "scripts/has-copy-index.ts"
+  "scripts/index.ts")
   | resources.Get
   | js.Build (dict "minify" true)
   | fingerprint

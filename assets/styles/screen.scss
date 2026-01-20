@@ -4,7 +4,7 @@ $width-margin-max: 32px;
 $width-margin-min: 16px;
 
 @use "base";
-@use "motion";
+@use "motion" as *;
 
 @mixin hide {
   position: absolute;
@@ -24,6 +24,7 @@ $width-margin-min: 16px;
   &:has(#dark-radio:checked),
   &[data-theme="dark"]:not(:has(#light-radio:checked)) {
     color-scheme: dark;
+    -webkit-font-smoothing: antialiased;
 
     #dark-label {
       @include hide;
@@ -33,6 +34,7 @@ $width-margin-min: 16px;
   &:has(#light-radio:checked),
   &[data-theme="light"]:not(:has(#dark-radio:checked)) {
     color-scheme: light;
+    -webkit-font-smoothing: auto;
 
     #light-label {
       @include hide;
@@ -44,8 +46,7 @@ a {
   color: var(--color-accent);
   text-decoration: none;
 
-  &[href^="https://"]:not([href^="https://samskeo.ch"])::after
-  {
+  &[href^="https://"]:not([href^="https://samskeo.ch"])::after {
     content: "\202f↗";
   }
 }
@@ -84,22 +85,24 @@ h6 {
 main {
   flex-grow: 1;
   inline-size: min($width-body, 100% - $width-margin-min * 2);
-  margin-block: 0;
+  padding-block-end: 1em;
   margin-inline: auto;
   container: main / inline-size;
 }
 
 pre {
-  padding-block: 0.25rem;
-  padding-inline: 0.5rem;
-  margin-block: 1rem;
-  margin-inline: 0;
+  position: relative;
+  margin-block: 0.5;
   background-color: var(--color-surface);
-  border-radius: 0.5rem;
+  border-radius: 0.5em;
 
-  code {
-    padding: 0;
+  code,
+  samp {
+    display: block;
+    padding-block: 0.25em;
+    padding-inline: 0.5em;
     margin: 0;
+    overflow: auto;
     background: none;
     border-radius: 0;
   }
@@ -113,12 +116,20 @@ pre {
 .article-footer {
   color: var(--color-subtext);
 
-  .nav-list li:not(:last-child)::after {
-    content: ", ";
+  h2,
+  h3,
+  h4 {
+    display: inline;
+    font: inherit;
+    color: inherit;
+
+    &::after {
+      content: ": ";
+    }
   }
 
-  ul {
-    padding-inline-start: 0;
+  .nav-list li:not(:last-child)::after {
+    content: ", ";
   }
 }
 
@@ -132,12 +143,22 @@ pre {
   align-items: baseline;
 }
 
+.nav-list {
+  @extend %list-reset;
+
+  display: inline;
+
+  li {
+    display: inline;
+  }
+}
+
 .sun-ray {
   stroke: var(--color-subtext);
 }
 
 #logo {
-  border-radius: 0.75rem;
+  border-radius: 0.75em;
 }
 
 #moon {
@@ -149,13 +170,12 @@ pre {
 }
 
 #page-footer {
-  padding-block: 1rem;
+  padding-block: 1em;
   padding-inline: clamp(
     $width-margin-min,
-    (100% - $width-body) / 2,
+    (100dvi - $width-body) / 2,
     $width-margin-max
   );
-  margin-block-start: 1rem;
   color: var(--color-text);
   background-color: var(--color-accent);
 
@@ -170,12 +190,12 @@ pre {
 
 #page-header {
   display: flex;
-  gap: 1rem;
+  gap: 1em;
   align-items: center;
-  padding-block: 1rem;
+  padding-block: 1em;
   padding-inline: clamp(
     $width-margin-min,
-    (100% - $width-body) / 2,
+    (100dvi - $width-body) / 2,
     $width-margin-max
   );
 
@@ -196,10 +216,6 @@ pre {
 
   path {
     stroke: var(--color-subtext);
-  }
-
-  svg {
-    display: block;
   }
 }
 
@@ -251,17 +267,25 @@ pre {
 }
 
 @media (prefers-color-scheme: dark) {
+  body {
+    -webkit-font-smoothing: antialiased;
+  }
+
   :root:not([data-theme], :has(#light-radio:checked)) #dark-label {
     @include hide;
   }
 }
 
 @media (prefers-color-scheme: light) {
+  body {
+    -webkit-font-smoothing: auto;
+  }
+
   :root:not([data-theme], :has(#dark-radio:checked)) #light-label {
     @include hide;
   }
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  @include motion.motion;
+  @include motion;
 }

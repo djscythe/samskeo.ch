@@ -17,7 +17,9 @@
       {{ .Content }}
     </section>
     <footer class="article-footer">
-      {{ partial "article-footer.html" (dict "page" . "taxonomy" "categories" ) }}
+      {{ partial "article-footer.html"
+        (dict "level" 2 "page" . "taxonomy" "categories")
+      }}
     </footer>
   </article>
 {{ end }}

@@ -16,6 +16,8 @@
     </h2>
   </header>
   <footer class="article-footer">
-    {{ partial "article-footer.html" (dict "page" . "taxonomy" "categories" ) }}
+    {{ partial "article-footer.html"
+      (dict "level" 3 "page" . "taxonomy" "categories")
+    }}
   </footer>
 </article>

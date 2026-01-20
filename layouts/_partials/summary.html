@@ -1,11 +1,15 @@
 <article>
   <header class="blog-header">
-    {{ partial "article-header.html" . }}
+    {{ partial "article-header.html" (dict "level" .level "link" true "page" .page) }}
   </header>
-  {{- .page.Content | strings.Truncate 100
-    (printf " <a href=\"%s\">…</a>" .page.RelPermalink | safeHTML)
-  -}}
+  <section>
+    {{- .page.Content | strings.Truncate 100
+      (printf " <a href=\"%s\">…</a>" .page.RelPermalink | safeHTML)
+    -}}
+  </section>
   <footer class="article-footer">
-    {{ partial "article-footer.html" (dict "page" .page "taxonomy" "tags" ) }}
+    {{ partial "article-footer.html"
+      (dict "level" (add .level 1) "page" .page "taxonomy" "tags")
+    }}
   </footer>
 </article>

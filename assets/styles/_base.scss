@@ -14,8 +14,8 @@ address {
 
 blockquote {
   display: flex;
-  padding-inline-start: 1rem;
-  margin-block: 0.5rem;
+  padding-inline-start: 1em;
+  margin-block: 0.5em;
   margin-inline: 0;
   font-style: italic;
 }
@@ -31,7 +31,6 @@ code,
 samp {
   font-family: CascadiaCode, monospace;
   hyphens: none;
-  white-space: pre-wrap;
 }
 
 dd {
@@ -74,18 +73,19 @@ h6 {
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 2em;
 }
 
 h2 {
-  font-size: 1.4rem;
+  font-size: 1.4em;
 }
 
 h3 {
-  font-size: 1rem;
+  font-size: 1em;
 }
 
-img {
+img,
+svg {
   display: block;
 }
 
@@ -96,6 +96,10 @@ math {
 
 p {
   margin-block: 0.5em;
+}
+
+pre {
+  font: inherit;
 }
 
 sup {
@@ -123,7 +127,7 @@ sup {
   h2,
   h3 {
     margin: 0;
-    font-size: 1rem;
+    font-size: 1em;
   }
 
   p {
@@ -131,7 +135,7 @@ sup {
   }
 
   > li {
-    margin-block-end: 0.5rem;
+    margin-block-end: 0.5em;
   }
 }
 
@@ -139,18 +143,8 @@ sup {
   grid-column: 1 / -1;
   inline-size: 100%;
   block-size: auto;
-  margin-block-end: 0.5rem;
-  border-radius: 0.75rem;
-}
-
-.nav-list {
-  @extend %list-reset;
-
-  display: inline;
-
-  li {
-    display: inline;
-  }
+  margin-block-end: 0.5em;
+  border-radius: 0.75em;
 }
 
 .portfolio-list {
@@ -158,11 +152,11 @@ sup {
 
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.5rem 1rem;
+  gap: 0.5em 1em;
 
   h2 {
     margin: 0;
-    font-size: 1rem;
+    font-size: 1em;
   }
 }
 

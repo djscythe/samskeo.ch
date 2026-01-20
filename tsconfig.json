@@ -1,6 +1,7 @@
 {
   "extends": "@tsconfig/strictest",
   "compilerOptions": {
+    "checkJs": true,
     "module": "nodenext",
     "noEmit": true,
     "types": ["node"]
