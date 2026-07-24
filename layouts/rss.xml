@@ -5,13 +5,13 @@
     <link>{{ .Permalink }}</link>
     <title>{{ partial "named-title.html" . }}</title>
     <image>
-      <link>{{ site.BaseURL }}</link>
+      <link>{{ site.Home.Permalink }}</link>
       <title>{{ site.Title | markdownify | plainify }}</title>
-      <url>{{ (resources.Get "images/logo.png").Permalink }}</url>
+      <url>{{ absURL "/images/logo.png" }}</url>
       <height>32</height>
       <width>32</width>
     </image>
-    <language>{{ site.Language.LanguageCode }}</language>
+    <language>{{ .Language.Locale }}</language>
     <lastBuildDate>{{ (index .RegularPages.ByLastmod.Reverse 0).Lastmod.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</lastBuildDate>
     {{ with site.Params.author }}<managingEditor>{{ .email }} ({{ .name }})</managingEditor>{{ end }}
     {{ with site.Params.author }}<webMaster>{{ .email }} ({{ .name }})</webMaster>{{ end }}

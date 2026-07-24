@@ -1,7 +1,10 @@
 +++
 categories = ["programming"]
-date = "2025-08-26"
+date = "2025-09-27"
 title = "ship"
+
+[params]
+coverAlt = "a stylized flat depiction of a sail ship."
 +++
 
 ship (simple hypertext includes preprocessor) is a toy HTML preprocessor
@@ -45,7 +48,7 @@ switch to determine if hidden ('dotted') files should be ignored. originally,
 the HTML-specific logic was contained within this function, but that lead to
 separation-of-concerns issues; therefore, the parameter `f` was added, into
 which the function concerned with processing HTML (here called `process`) can
-be passed. This is very idiomatic in a functional programming style, and can be
+be passed. this is very idiomatic in a functional programming style, and can be
 considered a variation on the dependency injection design pattern.
 
 however, this lead to an interesting lifetime issues, because `process`'s
@@ -68,9 +71,9 @@ implementation of `FnMut` is not general enough
 ...but it actually implements `FnMut<(&'2 Path, &Path)>`, for some specific lifetime `'2`
 ```
 
-'not general enough' is a pretty wonky way of telling us that the lifetimes in
-`process`'s parameters are being bound to early, which errors because
-`traverse` is expecting a much more general higher-ranked lifetime. the
+'not general enough' is just a pretty wonky way of telling us that the
+lifetimes in `process`'s parameters are being bound too early, which errors
+because `traverse` is expecting a much more general higher-ranked lifetime. the
 solution was to wrap `process` in a closure before passing it to `traverse`:
 `|p, t| process(p, t)`. this might look redundant, and the functional
 programmer in me is screaming at me to eta-reduce it, but as it turns out the

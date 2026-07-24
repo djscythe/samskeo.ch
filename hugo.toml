@@ -1,7 +1,7 @@
 baseURL = "https://samskeo.ch/"
 capitalizeListTitles = false
 disableHugoGeneratorInject = true
-languageCode = "en-GB-oxendict"
+locale = "en-GB-oxendict"
 pluralizeListTitles = false
 title = "djscythe's website"
 uglyURLs = true

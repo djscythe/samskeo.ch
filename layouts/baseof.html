@@ -1,8 +1,12 @@
 <!doctype html>
-<html lang="{{ site.Language.LanguageCode }}">
-  <head>
+<html lang="{{ .Language.Locale }}">
+  <head
+    prefix="{{ printf "%s%s" "og: https://ogp.me/ns#"
+      (cond .IsPage " article: https://ogp.me/ns/article#"
+      (cond .IsHome " profile: http://ogp.me/ns/profile#" ""))
+    }}"
+  >
     {{ partial "head.html" . }}
-    {{ block "head-supplement" . }}{{ end }}
   </head>
   <body>
     <header id="page-header">

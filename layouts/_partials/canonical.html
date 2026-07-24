@@ -1,0 +1,9 @@
+{{- with .Permalink -}}
+  {{- if $.IsPage -}}
+    {{- strings.TrimSuffix ".html" . -}}
+  {{- else if $.IsHome -}}
+    {{- strings.TrimSuffix "/index.html" . -}}
+  {{- else -}}
+    {{- strings.TrimSuffix "index.html" . -}}
+  {{- end -}}
+{{- end -}}
