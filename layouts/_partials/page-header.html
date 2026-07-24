@@ -1,8 +1,8 @@
 {{ with site }}
   {{ ("images/logo.svg" | resources.Get | minify).Publish }}
   {{ ("images/logo-cat.svg" | resources.Get | minify).Publish }}
-  <a href="{{ .Home.RelPermalink }}"
-    ><img id="logo" src="/images/logo" alt="go home" height="40" width="40"
+  <a href="{{ .Home.RelPermalink }}" aria-hidden="true" tabindex="-1"
+    ><img id="logo" src="/images/logo" height="40" width="40" alt=""
   /></a>
   <a href="{{ .Home.RelPermalink }}"
     >{{ .Params.displayTitle | default .Title | markdownify }}</a
@@ -79,7 +79,7 @@
       <g transform="rotate(270 16 16)">
         <use class="sun-ray" href="#sun-ray" stroke="black" />
       </g>
-      <g transform="rotate(316 16 15)">
+      <g transform="rotate(315 16 16)">
         <use class="sun-ray" href="#sun-ray" stroke="black" />
       </g>
     </svg>

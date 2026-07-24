@@ -9,7 +9,7 @@
   <ul class="blog-list">
     {{ range .Pages }}
       <li>
-        {{ partial "summary.html" (dict "link" true "page" . "tag" "h2") }}
+        {{ partial "summary.html" (dict "level" 2 "page" .) }}
       </li>
     {{ end }}
   </ul>
