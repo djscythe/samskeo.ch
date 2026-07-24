@@ -1,7 +1,10 @@
+<meta charset="UTF-8" />
+<title>{{ partial "named-title.html" . }}</title>
+<link href="{{ partial "canonical.html" . | safeURL }}" rel="canonical" />
 <link href="/favicon.ico" rel="icon" sizes="32x32" type="image/x-icon" />
 <link
-  rel="icon"
   href="{{ ("images/logo.svg" | resources.Get | minify).RelPermalink }}"
+  rel="icon"
   type="image/svg+xml"
 />
 <link href="/apple-touch-icon.png" rel="apple-touch-icon" type="image/png" />
@@ -41,11 +44,24 @@
     title="{{ partial "named-title.html" $ }}"
   />
 {{ end }}
-<meta charset="UTF-8" />
-{{ range where .Site.Data.contact "site" "Fediverse" }}
+{{ if .IsHome }}
+  {{ range where hugo.Data.contact "site" "Fediverse" }}
+    <link href="{{ .link }}" rel="me" />
+  {{ end }}
+{{ end }}
+<meta name="author" content="{{ site.Params.author.name }}" />
+{{ range where hugo.Data.contact "site" "Fediverse" }}
   <meta name="fediverse:creator" content="{{ .name }}" />
 {{ end }}
+<meta name="description" content="{{ .Plain | strings.Truncate 100 " …" }}" />
+<meta
+  name="theme-color"
+  content="oklch(65% 50% 255deg)"
+  media="(color-gamut: p3)"
+/>
+<meta name="theme-color" content="oklch(65% 47.5% 255deg)" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+{{ partial "opengraph.html" . }}
 {{ with "scripts/index.ts"
   | resources.Get
   | js.Build (dict "minify" true)
@@ -58,4 +74,3 @@
     defer
   ></script>
 {{ end }}
-<title>{{ partial "named-title.html" . }}</title>

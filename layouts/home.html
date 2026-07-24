@@ -1,8 +1,3 @@
-{{ define "head-supplement" }}
-  {{ range where .Site.Data.contact "site" "Fediverse" }}
-    <link rel="me" href="{{ .link }}" />
-  {{ end }}
-{{ end }}
 {{ define "main" }}
   {{ .Content }}
 {{ end }}

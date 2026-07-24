@@ -1,0 +1,9 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "compatibility_date": "2026-07-24",
+  "name": "samskeoch",
+  "pages_build_output_dir": "public/",
+  "vars": {
+    "HUGO_VERSION": "0.164.0",
+  },
+}
