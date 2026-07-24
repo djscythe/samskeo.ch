@@ -1,5 +1,6 @@
+*.d.ts
 /.wrangler/
-/functions/types.d.ts
 /node_modules/
 /public/
 /resources/
+tsconfig.tsbuildinfo
