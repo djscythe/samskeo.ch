@@ -5,7 +5,7 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
   const result = z
     .enum(["dark", "light"])
     .safeParse(
-      cookie.parse(context.request.headers.get("cookie") ?? "")["theme"],
+      cookie.parseCookie(context.request.headers.get("cookie") ?? "")["theme"],
     );
 
   if (!result.success) {

@@ -1,8 +1,12 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "composite": true,
+    "emitDeclarationOnly": true,
+    "target": "esnext",
     "module": "esnext",
     "moduleResolution": "bundler",
+    "noEmit": false,
     "types": []
   }
 }

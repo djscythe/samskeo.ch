@@ -1,9 +1,11 @@
 {
   "extends": "@tsconfig/strictest",
   "compilerOptions": {
+    "checkJs": true,
     "module": "nodenext",
     "noEmit": true,
     "types": ["node"]
   },
+  "references": [{ "path": "assets/scripts/" }, { "path": "functions/" }],
   "exclude": ["public/"]
 }
