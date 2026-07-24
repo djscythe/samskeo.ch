@@ -2,13 +2,15 @@
 {{ define "main" }}
   <article>
     <header class="blog-header">
-      {{ partial "article-header.html" (dict "page" . "tag" "h1") }}
+      {{ partial "article-header.html" (dict "page" . "level" 1) }}
     </header>
     <section>
       {{ .Content }}
     </section>
     <footer class="article-footer">
-      {{ partial "article-footer.html" (dict "page" . "taxonomy" "tags" ) }}
+      {{ partial "article-footer.html"
+        (dict "level" 2 "page" . "taxonomy" "tags")
+      }}
     </footer>
   </article>
 {{ end }}

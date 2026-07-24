@@ -12,14 +12,11 @@
     {{ end }}
   {{ end }}
 {{ end }}
-{{ define "main" }}
-  {{ .Content }}
-  <ul class="sitemap-list">
-    {{ with .Site.Home }}
-      <li>
-        <a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
-      </li>
-      {{ template "sitemap" . }}
-    {{ end }}
-  </ul>
-{{ end }}
+<ul class="sitemap-list">
+  {{ with .Site.Home }}
+    <li>
+      <a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
+    </li>
+    {{ template "sitemap" . }}
+  {{ end }}
+</ul>

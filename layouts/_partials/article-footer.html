@@ -1,4 +1,6 @@
-{{ .taxonomy | markdownify }}:&#32;
+{{ .level | printf "<h%d>" | safeHTML }}
+{{ .taxonomy | markdownify }}
+{{ .level | printf "</h%d>" | safeHTML }}
 <ul class="nav-list">
   {{ range .page.GetTerms .taxonomy }}
     <li><a href="{{ .RelPermalink }}">{{ .LinkTitle | markdownify }}</a></li>
