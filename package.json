@@ -26,7 +26,7 @@
     "wrangler": "^4.114.0"
   },
   "scripts": {
-    "build": "stylelint assets/styles/ && wrangler types --path=functions/wrangler.d.ts && eslint && tsc -b && hugo build",
+    "build": "prettier -c ./ && stylelint assets/styles/ && wrangler types --path=functions/wrangler.d.ts && eslint && tsc -b && hugo build",
     "dev": "concurrently \"hugo --watch --buildDrafts\" \"wrangler pages dev\""
   },
   "allowScripts": {
