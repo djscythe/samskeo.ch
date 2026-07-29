@@ -20,6 +20,42 @@ $width-margin-min: 16px;
   --color-overlay: light-dark(oklch(85% 7.5% 255deg), oklch(45% 2.5% 255deg));
   --color-surface: light-dark(oklch(95% 5% 255deg), oklch(30% 2.5% 255deg));
   --color-text: light-dark(#{$color-black}, white);
+
+  &[data-theme="dark"]:not(:has(:is(#dark-radio, #light-radio):checked)) {
+    color-scheme: dark;
+    -webkit-font-smoothing: antialiased;
+
+    #dark-label {
+      @include hide;
+    }
+  }
+
+  &[data-theme="light"]:not(:has(:is(#dark-radio, #light-radio):checked)) {
+    color-scheme: light;
+    -webkit-font-smoothing: auto;
+
+    #light-label {
+      @include hide;
+    }
+  }
+
+  &:has(#dark-radio:checked) {
+    color-scheme: dark;
+    -webkit-font-smoothing: antialiased;
+
+    #dark-label {
+      @include hide;
+    }
+  }
+
+  &:has(#light-radio:checked) {
+    color-scheme: light;
+    -webkit-font-smoothing: auto;
+
+    #light-label {
+      @include hide;
+    }
+  }
 }
 
 a {
@@ -42,42 +78,6 @@ body {
   min-block-size: 100dvb;
   color: var(--color-text);
   background-color: var(--color-background);
-
-  &:has(#dark-radio:checked) {
-    color-scheme: dark;
-    -webkit-font-smoothing: antialiased;
-
-    #dark-label {
-      @include hide;
-    }
-  }
-
-  &:has(#light-radio:checked) {
-    color-scheme: light;
-    -webkit-font-smoothing: auto;
-
-    #light-label {
-      @include hide;
-    }
-  }
-}
-
-html[data-theme="dark"]:not(:has(#light-radio:checked)) body {
-  color-scheme: dark;
-  -webkit-font-smoothing: antialiased;
-
-  #dark-label {
-    @include hide;
-  }
-}
-
-html[data-theme="light"]:not(:has(#dark-radio:checked)) body {
-  color-scheme: light;
-  -webkit-font-smoothing: auto;
-
-  #light-label {
-    @include hide;
-  }
 }
 
 code {
@@ -283,22 +283,22 @@ pre {
 }
 
 @media (prefers-color-scheme: dark) {
-  body {
+  :root:not([data-theme], :has(:is(#dark-radio, #light-radio):checked)) {
     -webkit-font-smoothing: antialiased;
-  }
 
-  :root:not([data-theme], :has(#light-radio:checked)) #dark-label {
-    @include hide;
+    #dark-label {
+      @include hide;
+    }
   }
 }
 
 @media (prefers-color-scheme: light) {
-  body {
+  :root:not([data-theme], :has(:is(#dark-radio, #light-radio):checked)) {
     -webkit-font-smoothing: auto;
-  }
 
-  :root:not([data-theme], :has(#dark-radio:checked)) #light-label {
-    @include hide;
+    #light-label {
+      @include hide;
+    }
   }
 }
 
