@@ -1,0 +1,15 @@
+{{- with urls.Parse .Destination -}}
+  <a
+    href="{{ .String }}"
+    {{- with $.Title }}title="{{ . }}"{{ end -}}
+    {{- if and
+      .Hostname
+      (or (eq .Scheme "http") (eq .Scheme "https"))
+      (ne .Hostname (urls.Parse site.BaseURL).Hostname)
+    -}}
+      rel="noreferrer" target="_blank"
+    {{- end -}}
+  >
+    {{- with $.Text }}{{ . }}{{ end -}}
+  </a>
+{{- end -}}

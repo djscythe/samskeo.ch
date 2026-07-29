@@ -2,7 +2,21 @@
   <dl>
     {{ range hugo.Data.contact }}
       <dt>{{ .site }}</dt>
-      <dd><a href="{{ .link }}">{{ .name }}</a></dd>
+      <dd>
+        {{ $u := urls.Parse .link }}
+        <a
+          href="{{ $u.String }}"
+          {{- if and
+            $u.Hostname
+            (or (eq $u.Scheme "http") (eq $u.Scheme "https"))
+            (ne $u.Hostname (urls.Parse site.BaseURL).Hostname)
+          -}}
+            rel="noreferrer" target="_blank"
+          {{- end -}}
+        >
+          {{ .name }}
+        </a>
+      </dd>
     {{ end }}
   </dl>
 </address>

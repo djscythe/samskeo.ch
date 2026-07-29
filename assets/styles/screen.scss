@@ -62,7 +62,7 @@ a {
   color: var(--color-accent);
   text-decoration: none;
 
-  &[href^="https://"]:not([href^="https://samskeo.ch"])::after {
+  &[target="_blank"]::after {
     content: "\202f↗";
   }
 }
